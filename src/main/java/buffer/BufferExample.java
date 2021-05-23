@@ -32,9 +32,9 @@ public class BufferExample {
         BufferedOutputStream fileOutput = new BufferedOutputStream(new FileOutputStream(fileName), bufferSize);
 
         long startTime = System.currentTimeMillis();
-        for (int i = 0; i < 1_000_000; i++) {
+        for (int i = 0; i < 1_000; i++) {
             for (int j = 0; j < 5; j++) {
-                fileOutput.write(97 + random.nextInt(5));
+                fileOutput.write(97 + random.nextInt(26));
             }
             fileOutput.write(32);
         }
@@ -65,6 +65,7 @@ public class BufferExample {
         BufferedInputStream fileInput = new BufferedInputStream(new FileInputStream(fileName), bufferSize);
 
         long startTime = System.currentTimeMillis();
+        // b fileInput.read(bytes) 读取的 byte 个数
         int b;
         byte[] bytes = new byte[8 * 1024];
         while ((b = fileInput.read(bytes)) != -1 ) {
